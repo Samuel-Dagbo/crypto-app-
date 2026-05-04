@@ -4,7 +4,7 @@
   directory = "dist"
 
 [build.environment]
-  VITE_API_URL = "/api"
+  VITE_API_URL = "https://crypto-backend-7uwg.onrender.com/api"
 
 [[redirects]]
   from = "/api/*"

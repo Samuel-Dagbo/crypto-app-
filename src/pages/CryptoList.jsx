@@ -24,9 +24,15 @@ function CryptoList() {
         default:
           res = await fetchCryptos()
       }
-      setCryptos(res.data)
+      const data = res.data
+      if (Array.isArray(data)) {
+        setCryptos(data)
+      } else {
+        setCryptos([])
+      }
     } catch (err) {
       console.error('Error loading cryptos:', err)
+      setCryptos([])
     } finally {
       setLoading(false)
     }

@@ -17,9 +17,16 @@ function Home() {
   const loadCryptos = async () => {
     try {
       const res = await fetchCryptos()
-      setCryptos(res.data.slice(0, 5))
+      const data = res.data
+      if (Array.isArray(data)) {
+        setCryptos(data.slice(0, 5))
+      } else {
+        console.error('Invalid data format:', data)
+        setCryptos([])
+      }
     } catch (err) {
       console.error('Error loading cryptos:', err)
+      setCryptos([])
     } finally {
       setLoading(false)
     }
